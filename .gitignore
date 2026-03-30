@@ -1,0 +1,18 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+*.userprefs
+.vs/
+nupkg/
+
+## NuGet
+*.nupkg
+packages/
+
+## IDE
+.idea/
+.vscode/
+*.swp

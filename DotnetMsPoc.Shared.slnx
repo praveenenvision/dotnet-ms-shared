@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DotnetMsPoc.Shared/DotnetMsPoc.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DotnetMsPoc.Shared.Tests/DotnetMsPoc.Shared.Tests.csproj" />
+  </Folder>
+</Solution>
