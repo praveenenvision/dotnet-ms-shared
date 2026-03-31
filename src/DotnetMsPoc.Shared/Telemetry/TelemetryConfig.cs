@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -17,8 +19,22 @@ public static class TelemetryConfig
                     .AddHttpClientInstrumentation()
                     .AddSource(serviceName)
                     .AddConsoleExporter();
+            })
+            .WithMetrics(metrics =>
+            {
+                metrics
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddRuntimeInstrumentation()
+                    .AddPrometheusExporter();
             });
 
         return services;
+    }
+
+    public static WebApplication UseCustomOpenTelemetry(this WebApplication app)
+    {
+        app.UseOpenTelemetryPrometheusScrapingEndpoint();
+        return app;
     }
 }
